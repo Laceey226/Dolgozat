@@ -121,6 +121,25 @@ namespace Dolgozat
                 Console.WriteLine(lnbb_novekvo[i]);
             }
         }
+        static void AtlagAlattiDuplazas()
+        {
+            Console.WriteLine();
+            int atlag_seged = 0;
+            double atlag = 0;
+            for (int i = 0; i < szamok.Length; i++)
+            {
+                atlag_seged += szamok[i];
+            }
+            atlag = atlag_seged / szamok.Length;
+            for (int i = 0; i < szamok.Length; i++)
+            {
+                if (Convert.ToDouble(szamok[i]) < atlag)
+                {
+                    szamok[i] = szamok[i] * 2;
+                }
+                Console.WriteLine(szamok[i]);
+            }
+        }
         static void F02()
         {
             Console.Write("Add meg a minimumot: ");
@@ -129,6 +148,7 @@ namespace Dolgozat
             int max = Convert.ToInt32(Console.ReadLine());
             FeltoltEgyediekkel(min, max);
             LeghosszabbNovekvo();
+            AtlagAlattiDuplazas();
         }
         static void Main(string[] args)
         {
