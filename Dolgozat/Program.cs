@@ -15,6 +15,21 @@
                 Console.WriteLine(huto[i]);
            }
         }
+        static void Takarit()
+        {
+            string[] tomb = new string[huto.Length];
+            for (int i = 0;i < huto.Length;i++)
+            {
+                if (huto[i] != "")
+                {
+                    tomb[i] = huto[i];
+                }
+            }
+            for (int i = 0; i < huto.Length ;i++)
+            {
+                huto[i] = tomb[i];
+            }
+        }
         static void Main(string[] args)
         {
             Bekeres();
