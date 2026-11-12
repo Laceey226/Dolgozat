@@ -1,7 +1,10 @@
-﻿namespace Dolgozat
+﻿using System.Net.NetworkInformation;
+
+namespace Dolgozat
 {
     internal class Program
     {
+        static Random random = new Random();
         static string[] huto = new string[10];
         static void Bekeres()
         {
@@ -53,9 +56,41 @@
             string etelNeve = Console.ReadLine();
             Console.WriteLine("A keresett tárgy a " + KeresEtel(etelNeve) + ". helyen található");
         }
+        static int[] szamok = new int[10];
+        static void FeltoltEgyediekkel(int min, int max)
+        {
+            bool dupla = false;
+            int seged;
+            for (int i = 0;i < szamok.Length; i++)
+            {
+                do
+                {
+                    dupla = false;
+                    seged = random.Next(min, max);
+                    for (int j = 0; j < szamok.Length; j++)
+                    {
+                        if (szamok[j] == seged)
+                        {
+                            dupla = true;
+                        }
+                    }
+                } while (dupla == true);
+                dupla = false;
+                szamok[i] = seged;
+            }
+        }
+        static void F02()
+        {
+            Console.Write("Add meg a minimumot: ");
+            int min = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Add meg a maximumot: ");
+            int max = Convert.ToInt32(Console.ReadLine());
+            FeltoltEgyediekkel(min, max);
+        }
         static void Main(string[] args)
         {
-            F01();
+            //F01();
+            F02();
         }
     }
 }
