@@ -45,13 +45,17 @@
             return 0;
 
         }
-        static void Main(string[] args)
+        static void F01()
         {
             Bekeres();
             Takarit();
             Console.Write("Mit keresel? ");
             string etelNeve = Console.ReadLine();
             Console.WriteLine("A keresett tárgy a " + KeresEtel(etelNeve) + ". helyen található");
+        }
+        static void Main(string[] args)
+        {
+            F01();
         }
     }
 }
