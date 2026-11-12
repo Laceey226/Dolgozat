@@ -1,4 +1,5 @@
 ﻿using System.Net.NetworkInformation;
+using System.Runtime.InteropServices;
 
 namespace Dolgozat
 {
@@ -77,6 +78,47 @@ namespace Dolgozat
                 } while (dupla == true);
                 dupla = false;
                 szamok[i] = seged;
+                Console.WriteLine(szamok[i]);
+            }
+        }
+        static int[] lnbb_novekvo = new int[szamok.Length];
+        static void LeghosszabbNovekvo()
+        {
+            int seged = 0;
+            int allas = 0;
+            int allas_kezdo = 0;
+            int lnbb_hossz = 0;
+            int lnbb_kezdo = 0;
+            int lnbb_veg = 0;
+
+            for (int i = 1; i < szamok.Length; i++)
+            {
+                allas = i;
+                allas_kezdo = i;
+                while (allas != 0 && szamok[allas]! > szamok[allas - 1])
+                {
+                    if (allas != 0 && szamok[allas] > szamok[allas - 1])
+                    {
+                        allas++;
+                        seged++;
+                    }
+                }
+                if (seged > lnbb_hossz)
+                {
+                    lnbb_hossz = seged;
+                    lnbb_kezdo = allas_kezdo;
+                    lnbb_veg = allas_kezdo + seged;
+                }
+                allas = 0;
+                seged = 0;
+            }
+            Console.WriteLine();
+            Console.WriteLine("A leghosszabb növekvő sor: ");
+            for (int i = 0; i < lnbb_hossz; i++)
+            {
+                lnbb_novekvo[i] = szamok[lnbb_kezdo];
+                lnbb_kezdo++;
+                Console.WriteLine(lnbb_novekvo[i]);
             }
         }
         static void F02()
@@ -86,6 +128,7 @@ namespace Dolgozat
             Console.Write("Add meg a maximumot: ");
             int max = Convert.ToInt32(Console.ReadLine());
             FeltoltEgyediekkel(min, max);
+            LeghosszabbNovekvo();
         }
         static void Main(string[] args)
         {
