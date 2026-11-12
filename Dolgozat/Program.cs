@@ -49,6 +49,20 @@ namespace Dolgozat
             return 0;
 
         }
+        static void MaganhangzoVanE()
+        {
+            string maganhangzo = "aáeéiíoóöőuúüű";
+            foreach (var item in huto)
+            {
+                if (item.Length > 0)
+                {
+                    if (maganhangzo.Contains(item[0]))
+                    {
+                        Console.WriteLine(item);
+                    }
+                }
+            }
+        }
         static void F01()
         {
             Bekeres();
@@ -56,6 +70,7 @@ namespace Dolgozat
             Console.Write("Mit keresel? ");
             string etelNeve = Console.ReadLine();
             Console.WriteLine("A keresett tárgy a " + KeresEtel(etelNeve) + ". helyen található");
+            MaganhangzoVanE();
         }
         static int[] szamok = new int[10];
         static void FeltoltEgyediekkel(int min, int max)
@@ -152,7 +167,8 @@ namespace Dolgozat
         }
         static void Main(string[] args)
         {
-            //F01();
+            F01();
+            Console.WriteLine();
             F02();
         }
     }
